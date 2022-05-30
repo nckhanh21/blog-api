@@ -13,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,5 +54,14 @@ public class AuthService {
         org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
                 getContext().getAuthentication().getPrincipal();
         return Optional.of(principal);
+    }
+
+    public List<String> getAllUsername(){
+        List<User> users = userRepository.findAll();
+        ArrayList<String> listUsername = new ArrayList<>();
+       for(User i : users){
+           listUsername.add(i.getUserName());
+       }
+       return listUsername;
     }
 }

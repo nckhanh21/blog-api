@@ -1,6 +1,6 @@
 package com.programming.techie.springngblog.dto;
 
-public class PostDto {
+public class PostDtoOutput {
     private Long id;
     private String content;
     private String title;
@@ -10,13 +10,19 @@ public class PostDto {
 
     private String thumnail;
 
+    private long createdOn;
+
     private Long category_id;
     //  ----------------------------------------------------------------
     private Long numLike;
 
-    public Long getNumLike() {        return numLike;    }
+    public Long getNumLike() {
+        return numLike;
+    }
 
-    public void setNumLike(Long numLike) {        this.numLike = numLike;    }
+    public void setNumLike(Long numLike) {
+        this.numLike = numLike;
+    }
     //  --------------------------------------------------------------------
 
     public Long getId() {
@@ -73,5 +79,13 @@ public class PostDto {
 
     public void setCategory_id(Long category_id) {
         this.category_id = category_id;
+    }
+
+    public long getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(long createdOn) {
+        this.createdOn = createdOn;
     }
 }

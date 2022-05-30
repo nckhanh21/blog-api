@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table
@@ -26,12 +29,29 @@ public class Post {
     @NotBlank
     private String username;
 
-//    @Column
-//    private String thumnail;
-//
-//    @Column
-//    private String Desciption;
-//
+    @Column
+    private String thumnail;
+
+    @Column
+    private String Desciption;
+    //  ----------------------------------------------------------------
+    @Column
+    private Long numLike;
+
+    public Long getNumLike() {        return numLike;    }
+
+    public void setNumLike(Long numLike) {        this.numLike = numLike;    }
+    //  -----------------------------------------------------------------
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments = new ArrayList<>();
+
+
     public Long getId() {
         return id;
     }
@@ -79,4 +99,38 @@ public class Post {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getThumnail() {
+        return thumnail;
+    }
+
+    public void setThumnail(String thumnail) {
+        this.thumnail = thumnail;
+    }
+
+    public String getDesciption() {
+        return Desciption;
+    }
+
+    public void setDesciption(String desciption) {
+        Desciption = desciption;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+
 }
